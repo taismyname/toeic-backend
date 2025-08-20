@@ -5,7 +5,6 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(require('cors')());
 
-// Mock data (thay bằng Firebase sau)
 const questions = {
   listening: [
     { id: 1, question: "Listen and choose the correct answer.", options: ["A", "B", "C"], correctAnswer: 0 }
@@ -15,7 +14,6 @@ const questions = {
   ]
 };
 
-// API get questions
 app.get('/api/questions', (req, res) => {
   const type = req.query.type;
   if (questions[type]) {
@@ -25,7 +23,6 @@ app.get('/api/questions', (req, res) => {
   }
 });
 
-// API post scores (cần JWT và Firebase sau)
 app.post('/api/scores', (req, res) => {
   const score = req.body;
   console.log('Score saved:', score);
